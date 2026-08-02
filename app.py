@@ -178,6 +178,10 @@ price_cluster = (
     .mean()
 )
 
+price_cluster.index = [
+    cluster_names[i] for i in price_cluster.index
+]
+
 fig, ax = plt.subplots(figsize=(7,4))
 
 price_cluster.plot(
@@ -278,6 +282,9 @@ satisfaction = (
     data.groupby("Cluster")["satisfaction_score"]
     .mean()
 )
+satisfaction.index = [
+    cluster_names[i] for i in satisfaction.index
+]
 
 fig, ax = plt.subplots(figsize=(7,4))
 
