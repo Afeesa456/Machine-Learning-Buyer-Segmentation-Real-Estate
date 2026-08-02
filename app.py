@@ -97,11 +97,15 @@ cluster_counts = (
     .sort_index()
 )
 
+cluster_names = {
+    0: "Premium Buyers",
+    1: "First-Time Buyers",
+    2: "Corporate Buyers",
+    3: "Luxury Investors"
+}
+
 cluster_counts.index = [
-    "Cluster 0",
-    "Cluster 1",
-    "Cluster 2",
-    "Cluster 3"
+    cluster_names[i] for i in cluster_counts.index
 ]
 
 fig, ax = plt.subplots(figsize=(7,4))
