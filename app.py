@@ -2,23 +2,22 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# -----------------------------
 # Page Configuration
-# -----------------------------
+
 st.set_page_config(
     page_title="Real Estate Buyer Segmentation Dashboard",
     layout="wide"
 )
 
 st.title("🏠 Machine Learning Based Buyer Segmentation & Investment Profiling")
-# -----------------------------
+
 # Load Dataset
-# -----------------------------
+
 data = pd.read_csv("Real_Estate_Dashboard.csv")
 
-# -----------------------------
+
 # Sidebar Filters
-# -----------------------------
+
 
 st.sidebar.header("Dashboard Filters")
 
@@ -55,9 +54,8 @@ purpose = st.sidebar.selectbox(
 
 if purpose != "All":
     data = data[data["acquisition_purpose"] == purpose]    
-# -----------------------------
+
 # KPI Cards
-# -----------------------------
 
 total_buyers = len(data)
 
@@ -88,9 +86,8 @@ with col5:
     st.metric(
     "🏡 Avg Property Price",f"${avg_sale:,.0f}"
 )
-# ==========================
+
 # Buyer Cluster Distribution
-# ==========================
 
 st.subheader("Buyer Cluster Distribution")
 
@@ -121,9 +118,9 @@ ax.set_ylabel("Number of Buyers")
 
 st.pyplot(fig)    
 
-# ==========================
+
 # Buyer Type Distribution
-# ==========================
+
 
 st.subheader("Buyer Type Distribution")
 
@@ -144,9 +141,8 @@ plt.xticks(rotation=0)
 
 st.pyplot(fig)
 
-# ==========================
+
 # Acquisition Purpose Analysis
-# ==========================
 
 st.subheader("Acquisition Purpose Analysis")
 
@@ -167,9 +163,9 @@ plt.xticks(rotation=0)
 
 st.pyplot(fig)
 
-# ==========================
+
 # Average Sale Price by Cluster
-# ==========================
+
 
 st.subheader("Average Sale Price by Cluster")
 
@@ -192,9 +188,9 @@ ax.set_ylabel("Average Sale Price ($)")
 
 st.pyplot(fig)
 
-# ==========================
+
 # Geographic Buyer Analysis
-# ==========================
+
 
 st.subheader("Geographic Buyer Analysis")
 
@@ -220,9 +216,9 @@ plt.xticks(rotation=45)
 
 st.pyplot(fig)
 
-# ==========================
+
 # Loan Applied Analysis
-# ==========================
+
 
 st.subheader("Loan Applied Analysis")
 
@@ -244,9 +240,9 @@ plt.xticks(rotation=0)
 
 st.pyplot(fig)
 
-# ==========================
+
 # Referral Channel Analysis
-# ==========================
+
 
 st.subheader("Referral Channel Analysis")
 
@@ -268,9 +264,9 @@ plt.xticks(rotation=45)
 
 st.pyplot(fig)
 
-# ==========================
+
 # Satisfaction Score by Cluster
-# ==========================
+
 
 st.subheader("Average Satisfaction Score by Cluster")
 
@@ -293,9 +289,9 @@ ax.set_ylabel("Average Score")
 
 st.pyplot(fig)
 
-# ==========================
+
 # Business Insights
-# ==========================
+
 
 st.subheader("Business Insights")
 
@@ -336,16 +332,16 @@ st.write(f"👥 Total Buyers Analysed: **{total_buyers:,}**")
 
 st.write(f"💰 Total Sales Value: **${total_sales:,.2f}**")
 
-# ==========================
+
 # Dataset Preview
-# ==========================
+
 
 with st.expander("📄 View Dataset"):
     st.dataframe(data)
 
-# ==========================
+
 # Download Dataset
-# ==========================
+
 
 csv = data.to_csv(index=False)
 
